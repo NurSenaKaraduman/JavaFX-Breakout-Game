@@ -8,28 +8,28 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 
-public class Main extends Application {
+public class Main extends Application {   //inheritance
 
 // Sahne boyutu
-    static final int W = 480, H = 640;
+    static final int W = 480, H = 640;    //static çünkü paylaşılan bir nesne oluşuyor.
 
 // Top
-    double ballX = W / 2.0, ballY = H / 2.0;
+    double ballX = W / 2.0, ballY = H / 2.0;     //global(instance)değişkenler
     double ballDX = 3, ballDY = -3;
     final double BALL_R = 10;
 
 // Panel
     double paddleX = W / 2.0 - 40;
-    final double PADDLE_Y = H - 40;
-    final double PADDLE_W = 80, PADDLE_H = 12;
+    final double PADDLE_Y = H - 40;               //panelin Y eksenindeki konumu değişimediği için final
+    final double PADDLE_W = 80, PADDLE_H = 12;   //panelin boyutu değişmediği için final
 
 // Mouse takibi
     double mouseX = W / 2.0;
 //----------------------------------------------------
-    @Override
-    public void start(Stage stage) {
+    @Override    //polymorphism (method overriding)
+    public void start(Stage stage) { // Stage bir veri tipidir String gibi (Class).
         Canvas canvas = new Canvas(W, H);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        GraphicsContext gc = canvas.getGraphicsContext2D();  // FIRÇA BURADA DOĞDU
 
 // Mouse hareketi
         canvas.setOnMouseMoved(e -> mouseX = e.getX());
@@ -37,16 +37,16 @@ public class Main extends Application {
 // Game loop
         AnimationTimer timer = new AnimationTimer() {
             @Override
-            public void handle(long now) {
-                update();
-                draw(gc);
+            public void handle(long now) {   // handle saniyede 60 kere çağrılan bir method 
+                update();  // mantığı günceller Topun nereye gideceği
+                draw(gc);  // Yeni durumu ekrana çizer(2D olarak)
             }
         };
-        timer.start();
+        timer.start(); //oyun döngüsünü çalıştırma
 
-        StackPane root = new StackPane(canvas);
-        stage.setScene(new Scene(root, W, H));
-        stage.setTitle("Breakout");
+        StackPane root = new StackPane(canvas); //düzenleyici Kutu (Layout)
+        stage.setScene(new Scene(root, W, H)); //sahneyi Kurma (Scene)
+        stage.setTitle("Breakout");  //Pencere Başlığı
         stage.show();
     }
 
