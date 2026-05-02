@@ -19,8 +19,8 @@ public class Main extends Application {   //inheritance
     final double BALL_R = 10;
 
 // Panel
-    double paddleX = W / 2.0 - 40;
-    final double PADDLE_Y = H - 40;               //panelin Y eksenindeki konumu değişimediği için final
+    double paddleX = W / 2.0 -40;
+    final double PADDLE_Y = H - 50 ;               //panelin Y eksenindeki konumu değişimediği için final
     final double PADDLE_W = 80, PADDLE_H = 12;   //panelin boyutu değişmediği için final
 
 // Mouse takibi
@@ -59,7 +59,7 @@ public class Main extends Application {   //inheritance
         ballY += ballDY;
 
  // Sol/sağ duvar
-        if (ballX - BALL_R < 0 || ballX + BALL_R > W) ballDX *= -1;
+        if (ballX - BALL_R < 0 || ballX + BALL_R > W) ballDX *= -1; //topun hızı tersine çevirir
 
 // Üst duvar
         if (ballY - BALL_R < 0) ballDY *= -1;
@@ -76,7 +76,7 @@ public class Main extends Application {   //inheritance
         if (ballY > H + 20) {
             ballX = W / 2.0;
             ballY = H / 2.0;
-            ballDY = -3;
+            ballDY = -3;             //topu ekranın ortasına geri getirir
         }
     }
 //-----------------------------------------------------------
@@ -95,6 +95,6 @@ public class Main extends Application {   //inheritance
     }
 
     public static void main(String[] args) {
-        launch();
+        launch();  //javaFX çalıştırır
     }
 }
