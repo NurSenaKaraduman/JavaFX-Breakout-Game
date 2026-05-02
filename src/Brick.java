@@ -68,9 +68,9 @@ public class Brick {
         double distX = ballX - nearestX;
         double distY = ballY - nearestY;
 
-        // Pisagor teoremi: mesafe = √(distX² + distY²)
-        // Eğer mesafe < yarıçap ise top tuğlaya girmiş demektir
-        double distSquared = (distX * distX) + (distY * distY);
+        // Pisagor teoremi: mesafe² = x² + y²
+        // Eğer mesafe < yarıçap ise top tuğlaya girmiş.
+        double distSquared = (distX * distX) + (distY * distY);  
         return distSquared <= (ballR * ballR);
     }
 
